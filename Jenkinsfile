@@ -5,6 +5,7 @@ pipeline {
         stage('Compilation') {
             steps {
                 echo 'Building the Branch'
+                'mvn -B -DskipTests clean package'
             }
         }
         stage('Unit Tests') {

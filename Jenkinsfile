@@ -2,19 +2,26 @@ pipeline {
     agent any
 
     stages {
-        stage('Build') {
+
+        stage('Compilation') {
             steps {
-                echo 'Building..'
+                echo 'Building the Branch'
+                'mvn -B -DskipTests clean package'
             }
         }
-        stage('Test') {
+        stage('Unit Tests') {
             steps {
-                echo 'Started Testing..'
+                echo 'Testing stage of Jenkins Pipeline'
             }
         }
-        stage('Deploy') {
+        stage('Code Coverage') {
             steps {
-                echo 'Deploying....'
+                echo 'Started Code Coverage Evaluation'
+            }
+        }
+        stage('Deployment') {
+            steps {
+                echo 'Started Deployment of Generated Artifacts'
             }
         }
     }
